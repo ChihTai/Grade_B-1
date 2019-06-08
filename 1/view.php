@@ -1,271 +1,207 @@
 <?php
-
-$do = (!empty($_GET['do'])) ? $_GET['do'] :"";
+$do = (!empty($_GET['do'])) ? $_GET['do'] : "home";
 switch($do){
   case "title":
 ?>
-<h3 style="text-align:center">新增標題區圖片</h3>
+<h4 class="cent">新增網站標題</h4>
 <hr>
 <form action="api.php?do=newData" method="post" enctype="multipart/form-data">
 <table style="margin:auto;">
   <tr>
-    <td style="text-align:right">標題區圖片：</td>
-    <td><input type="file" name="file"></td>
+    <td style="text-align:right">網站標題圖片</td>
+    <td><input type="file" name="file" id=""></td>
   </tr>
   <tr>
-    <td style="text-align:right">標題區替代文字：</td>
-    <td><input type="text" name="text"></td>
+    <td style="text-align:right">網站標題文字</td>
+    <td><input type="text" name="text" id=""></td>
+  </tr>
+  <tr>
     <input type="hidden" name="table" value="title">
-  </tr>
-  <tr>
-    <td><input type="submit" value="新增"><input type="reset" value="重置"></td>
-    <td></td>
+    <td colspan="2" class="cent"><input type="submit" value="新增"><input type="reset" value="重罝"></td>
   </tr>
 </table>
 </form>
-<?
-  break;
-  case "updateTitle":
-?>
-<h3 style="text-align:center">更新標題區圖片</h3>
-<hr>
-<form action="api.php?do=updateImage" method="post" enctype="multipart/form-data">
-<table style="margin:auto;">
-  <tr>
-    <td style="text-align:right">標題區圖片：</td>
-    <td><input type="file" name="file"></td>
-    <input type="hidden" name="id" value="<?=$_GET['id'];?>">
-    <input type="hidden" name="table" value="title">
-  </tr>
-  <tr>
-    <td><input type="submit" value="新增"><input type="reset" value="重置"></td>
-    <td></td>
-  </tr>
-</table>
-</form>
-<?
+<?php
   break;
   case "ad":
   ?>
-  <h3 style="text-align:center">新增動態文字廣告</h3>
+  <h4 class="cent">新增動態文字廣告</h4>
   <hr>
   <form action="api.php?do=newData" method="post" enctype="multipart/form-data">
   <table style="margin:auto;">
     <tr>
-      <td style="text-align:right">動態文字廣告：</td>
-      <td><input type="text" name="text"></td>
-      <input type="hidden" name="table" value="ad">
+      <td style="text-align:right">動態文字廣告</td>
+      <td><input type="text" name="text" id=""></td>
     </tr>
     <tr>
-      <td><input type="submit" value="新增"><input type="reset" value="重置"></td>
-      <td></td>
+      <input type="hidden" name="table" value="ad">
+      <td colspan="2" class="cent"><input type="submit" value="新增"><input type="reset" value="重罝"></td>
     </tr>
   </table>
-  <form>
-  <?
+  </form>
+  <?php
   break;
   case "mvim":
   ?>
-  <h3 style="text-align:center">新增動畫圖片</h3>
+  <h4 class="cent">新增動畫圖片</h4>
   <hr>
   <form action="api.php?do=newData" method="post" enctype="multipart/form-data">
   <table style="margin:auto;">
     <tr>
-      <td style="text-align:right">動畫圖片：</td>
-      <td><input type="file" name="file"></td>
-      <input type="hidden" name="table" value="mvim">
+      <td style="text-align:right">網站動畫圖片</td>
+      <td><input type="file" name="file" id=""></td>
     </tr>
-
     <tr>
-      <td><input type="submit" value="新增"><input type="reset" value="重置"></td>
-      <td></td>
+      <input type="hidden" name="table" value="mvim">
+      <td colspan="2" class="cent"><input type="submit" value="新增"><input type="reset" value="重罝"></td>
     </tr>
   </table>
   </form>
-  <?
-  break;
-  case "updateMvim":
-  ?>
-  <h3 style="text-align:center">更換動畫圖片</h3>
-  <hr>
-  <form action="api.php?do=updateImage" method="post" enctype="multipart/form-data">
-  <table style="margin:auto;">
-    <tr>
-      <td style="text-align:right">動畫圖片：</td>
-      <td><input type="file" name="file"></td>
-      <input type="hidden" name="id" value="<?=$_GET['id'];?>">
-      <input type="hidden" name="table" value="mvim">
-    </tr>
-    <tr>
-      <td><input type="submit" value="新增"><input type="reset" value="重置"></td>
-      <td></td>
-    </tr>
-  </table>
-  </form>
-  <?
+  <?php
   break;
   case "image":
   ?>
-  <h3 style="text-align:center">新增校園映像圖片</h3>
+  <h4 class="cent">新增校園映象圖片</h4>
   <hr>
   <form action="api.php?do=newData" method="post" enctype="multipart/form-data">
   <table style="margin:auto;">
     <tr>
-      <td style="text-align:right">校園映像圖片：</td>
-      <td><input type="file" name="file"></td>
-      <input type="hidden" name="table" value="image">
+      <td style="text-align:right">校園映象圖片</td>
+      <td><input type="file" name="file" id=""></td>
     </tr>
-
     <tr>
-      <td><input type="submit" value="新增"><input type="reset" value="重置"></td>
-      <td></td>
+      <input type="hidden" name="table" value="image">
+      <td colspan="2" class="cent"><input type="submit" value="新增"><input type="reset" value="重罝"></td>
     </tr>
   </table>
   </form>
-  <?
-  break;
-  case "updateImage":
-  ?>
-  <h3 style="text-align:center">更換校園映像圖片</h3>
-  <hr>
-  <form action="api.php?do=updateImage" method="post" enctype="multipart/form-data">
-  <table style="margin:auto;">
-    <tr>
-      <td style="text-align:right">校園映像圖片：</td>
-      <td><input type="file" name="file"></td>
-      <input type="hidden" name="id" value="<?=$_GET['id'];?>">
-      <input type="hidden" name="table" value="image">
-    </tr>
-    <tr>
-      <td><input type="submit" value="新增"><input type="reset" value="重置"></td>
-      <td></td>
-    </tr>
-  </table>
-  </form>
-  <?  
+  <?php
   break;
   case "news":
   ?>
-  <h3 style="text-align:center">新增最新消息資料</h3>
+  <h4 class="cent">新增最新消息資料</h4>
   <hr>
   <form action="api.php?do=newData" method="post" enctype="multipart/form-data">
   <table style="margin:auto;">
     <tr>
-      <td style="text-align:right">最新消息資料：</td>
-      <td><textarea name="text"  cols="40" rows="5"></textarea></td>
-      <input type="hidden" name="table" value="news">
+      <td style="text-align:right">最新消息資料</td>
+      <td><textarea name="text" cols="40" rows="10"></textarea></td>
     </tr>
     <tr>
-      <td><input type="submit" value="新增"><input type="reset" value="重置"></td>
-      <td></td>
+      <input type="hidden" name="table" value="news">
+      <td colspan="2" class="cent"><input type="submit" value="新增"><input type="reset" value="重罝"></td>
     </tr>
   </table>
-  <form>
-  <?
+  </form>
+  <?php
   break;
   case "admin":
   ?>
-  <h3 style="text-align:center">新增管理者帳號</h3>
+  <h4 class="cent">新增管理者帳號</h4>
   <hr>
   <form action="api.php?do=newData" method="post" enctype="multipart/form-data">
   <table style="margin:auto;">
     <tr>
       <td style="text-align:right">帳號：</td>
-      <td><input type="text" name="acc"></td>
+      <td><input type="text" name="acc" id=""></td>
     </tr>
     <tr>
       <td style="text-align:right">密碼：</td>
-      <td><input type="text" name="pw"></td>
+      <td><input type="password" name="pw" id=""></td>
     </tr>
     <tr>
       <td style="text-align:right">確認密碼：</td>
-      <td><input type="text" name="pw2"></td>
+      <td><input type="password" name="pw2" id=""></td>
     </tr>
     <tr>
-        <input type="hidden" name="table" value="admin">
-      <td><input type="submit" value="新增"><input type="reset" value="重置"></td>
-      <td></td>
+      <input type="hidden" name="table" value="admin">
+      <td colspan="2" class="cent"><input type="submit" value="新增"><input type="reset" value="重罝"></td>
     </tr>
   </table>
-  <form>
-  <?
+  </form>
+  <?php
   break;
   case "menu":
   ?>
-  <h3 style="text-align:center">新增主選單</h3>
+  <h4 class="cent">新增主選單</h4>
   <hr>
   <form action="api.php?do=newData" method="post" enctype="multipart/form-data">
   <table style="margin:auto;">
     <tr>
       <td style="text-align:right">主選單名稱：</td>
-      <td><input type="text" name="text"></td>
+      <td><input type="text" name="text" id=""></td>
     </tr>
     <tr>
       <td style="text-align:right">選單連結網址：</td>
-      <td><input type="text" name="href"></td>
+      <td><input type="text" name="href" id=""></td>
     </tr>
+
     <tr>
-        <input type="hidden" name="table" value="menu">
-      <td><input type="submit" value="新增"><input type="reset" value="重置"></td>
-      <td></td>
+      <input type="hidden" name="table" value="menu">
+      <td colspan="2" class="cent"><input type="submit" value="新增"><input type="reset" value="重罝"></td>
     </tr>
   </table>
-  <form>
-  <?
+  </form>
+  <?php
   break;
-  case "subMenu":
-  include_once "base.php";
-
-    $subs=all("menu",['parent'=>$_GET['id']]);
-
+  case "updateTitle":
   ?>
-  <h3 style="text-align:center">編輯次選單</h3>
+  <h4 class="cent">更新標題圖片</h4>
   <hr>
-  <form action="api.php?do=subMenu" method="post" enctype="multipart/form-data">
+  <form action="api.php?do=updateImage" method="post" enctype="multipart/form-data">
   <table style="margin:auto;">
     <tr>
-      <td style="text-align:right">次選單名稱：</td>
-      <td style="text-align:right">次選單連結網址：</td>
-      <td>刪除</td>
+      <td style="text-align:right">網站標題圖片</td>
+      <td><input type="file" name="file" id=""></td>
     </tr>
-<?php
-foreach($subs as $key => $value){
-  ?>
     <tr>
-      <td><input type="text" name="text[]" value="<?=$value['text'];?>"></td>
-      <td><input type="text" name="href[]" value="<?=$value['href'];?>"></td>
-      <input type="hidden" name="id[]" value="<?=$value['id'];?>">
-      <td><input type="checkbox" name="del[]" value="<?=$value['id'];?>"></td>
-    </tr>
-<?php
-}
-?>
-    <tr id="btn">
-        <input type="hidden" name="table" value="menu">
-        <input type="hidden" name="parent" value="<?=$_GET['id'];?>">
-      <td>
-        <input type="submit" value="修改確定">
-        <input type="reset" value="重置">
-        <input type="button" value="更多次選單" onclick="moreSub()">
-      </td>
-      <td></td>
+      <input type="hidden" name="id" value="<?=$_GET['id'];?>">
+      <input type="hidden" name="table" value="title">
+      <td colspan="2" class="cent"><input type="submit" value="更新"><input type="reset" value="重罝"></td>
     </tr>
   </table>
-  <form>
-  <script>
-    function moreSub(){
-      $str=`
-            <tr>
-              <td><input type="text" name="text2[]" value=""></td>
-              <td><input type="text" name="href2[]" value=""></td>
-            </tr>`
-      $("#btn").before($str);
-    }
-  </script>
-  <?
+  </form>
+  <?php
   break;
-  default:
-  echo "無此功能";
-  
+  case "updateMvim":
+  ?>
+  <h4 class="cent">更新動畫圖片</h4>
+  <hr>
+  <form action="api.php?do=updateImage" method="post" enctype="multipart/form-data">
+  <table style="margin:auto;">
+    <tr>
+      <td style="text-align:right">動畫圖片</td>
+      <td><input type="file" name="file" id=""></td>
+    </tr>
+    <tr>
+      <input type="hidden" name="id" value="<?=$_GET['id'];?>">
+      <input type="hidden" name="table" value="mvim">
+      <td colspan="2" class="cent"><input type="submit" value="更新"><input type="reset" value="重罝"></td>
+    </tr>
+  </table>
+  </form>
+  <?php
+  break;
+  case "updateImage":
+  ?>
+  <h4 class="cent">更換校園映像圖片</h4>
+  <hr>
+  <form action="api.php?do=updateImage" method="post" enctype="multipart/form-data">
+  <table style="margin:auto;">
+    <tr>
+      <td style="text-align:right">校園映像圖片</td>
+      <td><input type="file" name="file" id=""></td>
+    </tr>
+    <tr>
+      <input type="hidden" name="id" value="<?=$_GET['id'];?>">
+      <input type="hidden" name="table" value="image">
+      <td colspan="2" class="cent"><input type="submit" value="更新"><input type="reset" value="重罝"></td>
+    </tr>
+  </table>
+  </form>
+  <?php
+  break;
 }
+
+
 ?>

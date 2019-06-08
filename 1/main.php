@@ -18,7 +18,8 @@ switch($do){
           <td></td>
         </tr>
         <?php
-
+          
+          $rows=all("title",[]);
           foreach($rows as $r){
         ?>
 
@@ -64,7 +65,7 @@ switch($do){
             <td width="7%">刪除</td>
           </tr>
           <?php
-  
+            $rows=all("ad",[]);
             foreach($rows as $r){
           ?>
   
@@ -109,7 +110,7 @@ switch($do){
             <td></td>
           </tr>
           <?php
-  
+            $rows=all("mvim",[]);
             foreach($rows as $r){
           ?>
   
@@ -155,7 +156,7 @@ switch($do){
             <td></td>
           </tr>
           <?php
-  
+             $rows=all("image",[]);
             foreach($rows as $r){
           ?>
   
@@ -188,10 +189,62 @@ switch($do){
   <?php
   break;
   case "total":
+  ?>
+  <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
+    <p class="t cent botli">進站總人數管理</p>
+    <form method="post" action="api.php?do=total">
+      <table width="100%">
+        <tbody>
+          <tr class="yel">
+            <td width="50%" style="text-align:right">進站總人數：</td>
+            <td width="50%" style="text-align:left"><input type="text" name="total" value="<?=find("total",1)['total'];?>"></td>
+          </tr>
 
+        </tbody>
+      </table>
+      <table style="margin-top:40px; width:70%;">
+        <tbody>
+          <tr>
+          <input type="hidden" name="table" value="image">
+            <td width="200px"></td>
+            <td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置"></td>
+          </tr>
+        </tbody>
+      </table>
+  
+    </form>
+  </div>
+  
+  <?php
   break;
   case "bottom":
+  ?>
+  <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
+    <p class="t cent botli">頁尾版權管理</p>
+    <form method="post" action="api.php?do=bottom">
+      <table width="100%">
+        <tbody>
+          <tr class="yel">
+            <td width="50%" style="text-align:right">頁尾版權：</td>
+            <td width="50%" style="text-align:left"><input type="text" name="total" value="<?=find("bottom",1)['bottom'];?>"></td>
+          </tr>
 
+        </tbody>
+      </table>
+      <table style="margin-top:40px; width:70%;">
+        <tbody>
+          <tr>
+          <input type="hidden" name="table" value="image">
+            <td width="200px"></td>
+            <td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置"></td>
+          </tr>
+        </tbody>
+      </table>
+  
+    </form>
+  </div>
+  
+  <?php
   break;
   case "news":
   ?>
@@ -206,7 +259,7 @@ switch($do){
             <td width="7%">刪除</td>
           </tr>
           <?php
-  
+            $rows=all("news",[]);
             foreach($rows as $r){
           ?>
   
@@ -249,7 +302,7 @@ switch($do){
             <td width="7%">刪除</td>
           </tr>
           <?php
-  
+              $rows=all("admin",[]);
             foreach($rows as $r){
           ?>
   
@@ -267,7 +320,7 @@ switch($do){
       <table style="margin-top:40px; width:70%;">
         <tbody>
           <tr>
-          <input type="hidden" name="table" value="adnub">
+          <input type="hidden" name="table" value="admin">
             <td width="200px"><input type="button"
                 onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;view.php?do=admin&#39;)" value="新增管理者帳號"></td>
             <td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置"></td>
@@ -296,7 +349,7 @@ switch($do){
             <td></td>
           </tr>
           <?php
-  
+            $rows=all("menu",[]);
             foreach($rows as $r){
           ?>
   
