@@ -24,8 +24,11 @@
 	</div>
 	<iframe style="display:none;" name="back" id="back"></iframe>
 	<div id="main">
-		<a title="" href="./home_files/home.htm">
-			<div class="ti" style="background:url(&#39;use/&#39;); background-size:cover;"></div>
+	<?php
+		$title=find("title",['sh'=>1]);
+	?>
+		<a title="<?=$title['text'];?>" href="index.php">
+			<div class="ti" style="background:url(&#39;./img/<?=$title['file'];?>&#39;); background-size:cover;"></div>
 			<!--標題-->
 		</a>
 		<div id="ms">
@@ -41,6 +44,17 @@
 			<div class="di"
 				style="height:540px; border:#999 1px solid; width:53.2%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
 				<marquee scrolldelay="120" direction="left" style="position:absolute; width:100%; height:40px;">
+				<?php
+						$marq=all("ad",['sh'=>1]);
+						$str="";
+						foreach($marq as $ma){
+
+							$str=$str . "&nbsp;&nbsp;&nbsp;" . $ma['text'];
+
+						}
+
+						echo $str;
+				?>
 				</marquee>
 				<?php
 

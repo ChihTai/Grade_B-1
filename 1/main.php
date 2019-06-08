@@ -21,14 +21,15 @@ switch($do){
           
           $rows=all("title",[]);
           foreach($rows as $r){
+            $chk=($r['sh']==1)?"checked":"";
         ?>
 
         <tr>
           <td width="45%"><img src="./img/<?=$r['file'];?>" style="width:300px;height:30px"></td>
           <td width="23%"><input type="text" name="text[]" value="<?=$r['text'];?>"></td>
-          <td width="7%"><input type="radio" name="sh" value="<?=$r['id'];?>"></td>
+          <td width="7%"><input type="radio" name="sh" value="<?=$r['id'];?>" <?=$chk;?>></td>
           <td width="7%"><input type="checkbox" name="del[]" value="<?=$r['id'];?>"></td>
-          <td><input type="button" value="更新圖片" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;view.php?do=updateImage&id=<?=$r['id'];?>&#39;)"></td>
+          <td><input type="button" value="更新圖片" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;view.php?do=updateTitle&id=<?=$r['id'];?>&#39;)"></td>
           <input type="hidden" name="id[]" value="<?=$r['id'];?>">
         </tr>
         <?php
@@ -67,12 +68,14 @@ switch($do){
           <?php
             $rows=all("ad",[]);
             foreach($rows as $r){
+              $chk=($r['sh']==1)?"checked":"";
           ?>
   
           <tr>
           <td width="68%"><input type="text" name="text[]" value="<?=$r['text'];?>" style="width:90%"></td>
-            <td width="7%"><input type="checkbox" name="sh[]" value="<?=$r['id'];?>"></td>
+            <td width="7%"><input type="checkbox" name="sh[]" value="<?=$r['id'];?>" <?=$chk;?>></td>
             <td width="7%"><input type="checkbox" name="del[]" value="<?=$r['id'];?>"></td>
+            <input type="hidden" name="id[]" value="<?=$r['id'];?>">
           </tr>
           <?php
             }
@@ -112,13 +115,14 @@ switch($do){
           <?php
             $rows=all("mvim",[]);
             foreach($rows as $r){
+              $chk=($r['sh']==1)?"checked":"";
           ?>
   
           <tr>
-            <td width="45%"><img src="./img/<?=$r['file'];?>" style="width:300px;height:30px"></td>
-            <td width="7%"><input type="radio" name="sh" value="<?=$r['id'];?>"></td>
+            <td width="45%"><embed src="./img/<?=$r['file'];?>" style="width:120px;height:80px"></td>
+            <td width="7%"><input type="checkbox" name="sh[]" value="<?=$r['id'];?>" <?=$chk;?>></td>
             <td width="7%"><input type="checkbox" name="del[]" value="<?=$r['id'];?>"></td>
-            <td><input type="button" value="更換動畫" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;view.php?do=updateImage&id=<?=$r['id'];?>&#39;)"></td>
+            <td><input type="button" value="更換動畫" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;view.php?do=updateMvim&id=<?=$r['id'];?>&#39;)"></td>
             <input type="hidden" name="id[]" value="<?=$r['id'];?>">
           </tr>
           <?php
@@ -158,11 +162,12 @@ switch($do){
           <?php
              $rows=all("image",[]);
             foreach($rows as $r){
+              $chk=($r['sh']==1)?"checked":"";
           ?>
   
           <tr>
-            <td width="45%"><img src="./img/<?=$r['file'];?>" style="width:300px;height:30px"></td>
-            <td width="7%"><input type="radio" name="sh" value="<?=$r['id'];?>"></td>
+            <td width="45%"><img src="./img/<?=$r['file'];?>" style="width:100px;height:68px"></td>
+            <td width="7%"><input type="checkbox" name="sh[]" value="<?=$r['id'];?>" <?=$chk;?>></td>
             <td width="7%"><input type="checkbox" name="del[]" value="<?=$r['id'];?>"></td>
             <td><input type="button" value="更換圖片" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;view.php?do=updateImage&id=<?=$r['id'];?>&#39;)"></td>
             <input type="hidden" name="id[]" value="<?=$r['id'];?>">
@@ -205,7 +210,6 @@ switch($do){
       <table style="margin-top:40px; width:70%;">
         <tbody>
           <tr>
-          <input type="hidden" name="table" value="image">
             <td width="200px"></td>
             <td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置"></td>
           </tr>
@@ -226,7 +230,7 @@ switch($do){
         <tbody>
           <tr class="yel">
             <td width="50%" style="text-align:right">頁尾版權：</td>
-            <td width="50%" style="text-align:left"><input type="text" name="total" value="<?=find("bottom",1)['bottom'];?>"></td>
+            <td width="50%" style="text-align:left"><input type="text" name="bottom" value="<?=find("bottom",1)['bottom'];?>"></td>
           </tr>
 
         </tbody>
@@ -234,7 +238,6 @@ switch($do){
       <table style="margin-top:40px; width:70%;">
         <tbody>
           <tr>
-          <input type="hidden" name="table" value="image">
             <td width="200px"></td>
             <td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置"></td>
           </tr>
@@ -261,12 +264,14 @@ switch($do){
           <?php
             $rows=all("news",[]);
             foreach($rows as $r){
+              $chk=($r['sh']==1)?"checked":"";
           ?>
   
           <tr>
           <td width="68%"><textarea name="text[]" cols="50" rows="3" style="width:90%"><?=$r['text'];?></textarea></td>
-            <td width="7%"><input type="checkbox" name="sh[]" value="<?=$r['id'];?>"></td>
+            <td width="7%"><input type="checkbox" name="sh[]" value="<?=$r['id'];?>" <?=$chk;?>></td>
             <td width="7%"><input type="checkbox" name="del[]" value="<?=$r['id'];?>"></td>
+            <input type="hidden" name="id[]" value="<?=$r['id'];?>">
           </tr>
           <?php
             }
@@ -351,13 +356,14 @@ switch($do){
           <?php
             $rows=all("menu",[]);
             foreach($rows as $r){
+              $chk=($r['sh']==1)?"checked":"";
           ?>
   
           <tr>
           <td width="30%"><input type="text" name="text[]" value="<?=$r['text'];?>"></td>
             <td width="30%"><input type="text" name="href[]" value="<?=$r['href'];?>"></td>
-            <td width="10%"></td>
-            <td width="10%"><input type="checkbox" name="sh[]" value="<?=$r['id'];?>"></td>
+            <td width="10%"><?=nums('menu',['parent'=>$r['id']]);?></td>
+            <td width="10%"><input type="checkbox" name="sh[]" value="<?=$r['id'];?>" <?=$chk;?>></td>
             <td width="10%"><input type="checkbox" name="del[]" value="<?=$r['id'];?>"></td>
             <td><input type="button" value="編輯次選單" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;view.php?do=subMenu&id=<?=$r['id'];?>&#39;)"></td>
             <input type="hidden" name="id[]" value="<?=$r['id'];?>">
@@ -370,7 +376,7 @@ switch($do){
       <table style="margin-top:40px; width:70%;">
         <tbody>
           <tr>
-          <input type="hidden" name="table" value="adnub">
+          <input type="hidden" name="table" value="menu">
             <td width="200px"><input type="button"
                 onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;view.php?do=menu&#39;)" value="新增主選單"></td>
             <td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置"></td>
