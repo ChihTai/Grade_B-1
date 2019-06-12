@@ -98,24 +98,41 @@
 					onclick="lo(&#39;?do=login&#39;)">管理登入</button>
 				<div style="width:89%; height:480px;" class="dbor">
 					<span class="t botli">校園映象區</span>
+						<div class="btn" onclick="pp(1)"><img src="./icon/up.jpg" alt=""></div>
+						<?php
+							$img=all("image",['sh'=>1]);
+							foreach($img as $key => $i){
+								echo "<div class='img im' id='ssaa$key'>";
+								echo "<img src='./img/".$i['file']."'>";
+							  echo "</div>";
+
+							}
+
+						?>
+						<div class="btn" onclick="pp(2)"><img src="./icon/dn.jpg" alt=""></div>
+
+
 					<script>
 						var nowpage = 0,
-							num = 0;
+							num = <?=nums("image",['sh'=>1]);?>;
 
 						function pp(x) {
 							var s, t;
 							if (x == 1 && nowpage - 1 >= 0) {
 								nowpage--;
 							}
-							if (x == 2 && (nowpage + 1) * 3 <= num * 1 + 3) {
+							if (x == 2 && (nowpage + 1) <= num*1 - 3) {
 								nowpage++;
 							}
+
 							$(".im").hide()
+
 							for (s = 0; s <= 2; s++) {
 								t = s * 1 + nowpage * 1;
 								$("#ssaa" + t).show()
 							}
 						}
+
 						pp(1)
 					</script>
 				</div>
