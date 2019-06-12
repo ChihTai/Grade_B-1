@@ -115,6 +115,36 @@ switch($do){
     save($table,$image);
     to("admin.php","do=$table");
   break;
+  case "editSub":
+    $table=$_POST['table'];
+    $parent=$_POST['parent'];
+
+    if(!empty($_POST['id'])){
+      //更新資料
+      foreach($_POST['id'] as $key => $id){
+        if(!empty($_POST['del']) && in_array($id,$_POST['del'])){
+            del($table,$id);
+        }else{
+          $sub=find("menu",$id);
+          $sub['text']=$_POST['text'][$key];
+          $sub['href']=$_POST['href'][$key];
+          save("menu",$sub);
+        }
+      }
+    }
+
+    if(!empty($_POST['text2'])){
+      foreach($_POST['text2'] as $key => $newText){
+        $new['text']=$newText;
+        $new['href']=$_POST['href2'][$key];
+        $new['parent']=$parent;
+        $new['sh']=1;
+        save("menu",$new);
+      }
+    }
+
+    to("admin.php","do=menu");
+  break;
   default:
 
   echo "非法入侵";

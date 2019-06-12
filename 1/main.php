@@ -414,7 +414,7 @@ switch($do){
             <td></td>
           </tr>
           <?php
-            $rows=all("menu",[]);
+            $rows=all("menu",['parent'=>0]);
             foreach($rows as $r){
               $chk=($r['sh']==1)?"checked":"";
           ?>
@@ -448,6 +448,10 @@ switch($do){
   </div>
   
   <?php
+  break;
+  case "logout":
+    unset($_SESSION['login']);
+    to("index.php","do=login");
   break;
 
 }
