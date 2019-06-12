@@ -4,6 +4,15 @@ $dsn = "mysql:host=localhost;charset=utf8;dbname=db01";
 $pdo = new PDO($dsn, "root", "");
 session_start();
 
+
+if(empty($_SESSION['total'])){
+    $total=find("total",1);
+    $total['total']=$total['total']+1;
+    save("total",$total);
+    $_SESSION['total']=$total['total'];
+}
+
+
 //查詢單筆資料
 function find($table, $def)
 {
@@ -16,7 +25,7 @@ function find($table, $def)
             $str[] = sprintf("`%s`='%s'", $key, $val);
 
         }
-
+        
         $sql = "select * from $table where " . implode(" && ", $str) . "";
 
     } else {
@@ -52,7 +61,7 @@ function save($table, $data)
         $sql = "insert into $table(`" . implode("`,`", $tmp) . "`) values('" . implode("','", $data) . "')";
 
     }
-    echo $sql;
+    //echo $sql;
     return $pdo->exec($sql);
 
 }
@@ -97,7 +106,7 @@ function q($str)
 {
     global $pdo;
 
-    return $pdo->query($srt)->fetchAll();
+    return $pdo->query($str)->fetchAll();
 
 }
 
@@ -152,4 +161,4 @@ function nums($table, $def)
 
 }
 
-echo nums("title", ['sh' => 0]);
+

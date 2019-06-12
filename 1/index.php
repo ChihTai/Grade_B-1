@@ -36,6 +36,24 @@
 				<div id="menuput" class="dbor">
 					<!--主選單放此-->
 					<span class="t botli">主選單區</span>
+					<?php
+						$menus=all("menu",['parent'=>0,'sh'=>1]);
+						foreach($menus as $m){
+							echo "<div class='mainmu'><a href='". $m['href'] ."'>" . $m['text'] . "</a>";
+							$chksub=nums("menu",['parent'=>$m['id']]);
+							if($chksub>0){
+								echo "<div class='mw'>";
+								$subs=all("menu",['parent'=>$m['id']]);
+								foreach($subs as $s){
+									echo "<div class='mainmu2'><a href='". $s['href'] ."'>" . $s['text'] . "</a></div>";
+								}
+								echo "</div>";
+							}
+							echo "</div>";
+						}
+
+				?>
+
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
 					<span class="t">進站總人數 :<?=find("total",1)['total'];?></span>
@@ -48,11 +66,8 @@
 						$marq=all("ad",['sh'=>1]);
 						$str="";
 						foreach($marq as $ma){
-
 							$str=$str . "&nbsp;&nbsp;&nbsp;" . $ma['text'];
-
 						}
-
 						echo $str;
 				?>
 				</marquee>
@@ -62,7 +77,6 @@
 					switch ($do) {
 							case "home":
 									include "home.php";
-
 									break;
 							case "login":
 									include "login.php";
@@ -77,8 +91,20 @@
 
 			<div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
 				<!--右邊-->
+					<?php
+				if(!empty($_SESSION['login'])){
+					?>
+				<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;"
+					onclick="lo(&#39;admin.php&#39;)">返回管理</button>
+					<?php
+				}else{
+					?>
 				<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;"
 					onclick="lo(&#39;?do=login&#39;)">管理登入</button>
+					<?php
+				}
+
+					?>
 				<div style="width:89%; height:480px;" class="dbor">
 					<span class="t botli">校園映象區</span>
 						<div class="btn" onclick="pp(1)"><img src="./icon/up.jpg" alt=""></div>
