@@ -154,19 +154,25 @@ switch($do){
       <table width="100%" class='cent'>
         <tbody>
           <tr class="yel">
-            <td width="45%">校園映象資料圖片</td>
+            <td width="68%">校園映象資料圖片</td>
             <td width="7%">顯示</td>
             <td width="7%">刪除</td>
             <td></td>
           </tr>
           <?php
-             $rows=all("image",[]);
+            $all=nums("image",[]);
+            $div=3;
+            $pages=ceil($all/$div);
+            $now=(!empty($_GET['p']))?$_GET['p']:1;
+            $start=($now-1)*$div;
+
+            $rows=q("select * from image limit $start,$div");
             foreach($rows as $r){
               $chk=($r['sh']==1)?"checked":"";
           ?>
   
           <tr>
-            <td width="45%"><img src="./img/<?=$r['file'];?>" style="width:100px;height:68px"></td>
+            <td width="68%"><img src="./img/<?=$r['file'];?>" style="width:100px;height:68px"></td>
             <td width="7%"><input type="checkbox" name="sh[]" value="<?=$r['id'];?>" <?=$chk;?>></td>
             <td width="7%"><input type="checkbox" name="del[]" value="<?=$r['id'];?>"></td>
             <td><input type="button" value="更換圖片" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;view.php?do=updateImage&id=<?=$r['id'];?>&#39;)"></td>
@@ -175,6 +181,30 @@ switch($do){
           <?php
             }
           ?>
+          <tr>
+            <td colspan="4">
+            <?php
+
+            if(($now-1)>0){
+              echo "<a href='?do=image&p=".($now-1)."' > < </a>";
+            }
+
+            for($i=1;$i<=$pages;$i++){
+              if($now==$i){
+
+                echo "<span style='font-size:24px'> $i </span>";
+              }else{
+
+                echo "<a href='?do=image&p=$i' > $i </a>";
+              }
+            }
+            if(($now+1)<=$pages){
+              echo "<a href='?do=image&p=".($now+1)."' > > </a>";
+            }
+          ?>
+            
+            </td>
+          </tr>          
         </tbody>
       </table>
       <table style="margin-top:40px; width:70%;">
@@ -257,12 +287,18 @@ switch($do){
       <table width="100%" class='cent'>
         <tbody>
           <tr class="yel">
-          <td width="23%">最新消息資料</td>
+          <td width="68%">最新消息資料</td>
             <td width="7%">顯示</td>
             <td width="7%">刪除</td>
           </tr>
           <?php
-            $rows=all("news",[]);
+            $all=nums("news",[]);
+            $div=5;
+            $pages=ceil($all/$div);
+            $now=(!empty($_GET['p']))?$_GET['p']:1;
+            $start=($now-1)*$div;
+
+            $rows=q("select * from news limit $start,$div");
             foreach($rows as $r){
               $chk=($r['sh']==1)?"checked":"";
           ?>
@@ -276,6 +312,30 @@ switch($do){
           <?php
             }
           ?>
+          <tr>
+            <td colspan="3">
+            <?php
+
+            if(($now-1)>0){
+              echo "<a href='?do=news&p=".($now-1)."' > < </a>";
+            }
+
+            for($i=1;$i<=$pages;$i++){
+              if($now==$i){
+
+                echo "<span style='font-size:24px'> $i </span>";
+              }else{
+
+                echo "<a href='?do=news&p=$i' > $i </a>";
+              }
+            }
+            if(($now+1)<=$pages){
+              echo "<a href='?do=news&p=".($now+1)."' > > </a>";
+            }
+          ?>
+            
+            </td>
+          </tr>
         </tbody>
       </table>
       <table style="margin-top:40px; width:70%;">
